@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Catering - Premium Food Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1ca92ab5;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3da91da2;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #50bd1198;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .caterers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .caterer-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .caterer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .caterer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .caterer-info {
+            padding: 20px;
+        }
+
+        .caterer-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        .caterer-description {
+            color: #718096;
+            margin-bottom: 15px;
+        }
+
+        .caterer-features {
+            margin-bottom: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+
+        .feature i {
+            color: #667eea;
+            margin-right: 10px;
+        }
+
+        .caterer-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .select-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .cart-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #4a5568;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #48bb78;
+        }
+
+        .checkout-btn:hover {
+            background: #38a169;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">SITEJ <span>Caterers</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#caterers">Our Platers</a></li>
+                    <li><a href="#cart">My Selection</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Premium Catering for Your Special Events</h1>
+            <p>Select from our premium caterers and create unforgettable culinary experiences</p>
+            <a href="#Meals" class="btn">Explore Meals</a>
+        </div>
+    </section>
+
+    <section id="caterers" class="container">
+        <h2 class="section-title">Our Premium meals</h2>
+        <div class="caterers-grid" id="caterers-container">
+            <!-- Meals cards will be dynamically generated -->
+        </div>
+    </section>
+
+    <section id="cart" class="container">
+        <div class="cart-section">
+            <h2 class="section-title" style="color: #4a5568;">Your Selection</h2>
+            <div class="cart-items" id="cart-items">
+                <p id="empty-cart-message">Your selection is empty. Choose a meal to get started!</p>
+            </div>
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: Inr<span id="total-amount">0</span>
+            </div>
+            <button class="btn checkout-btn" id="checkout-btn" style="display: none;">Proceed to Booking</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Delicious Catering. All rights reserved.</p>
+            <p>Premium catering services for all your special occasions</p>
+        </div>
+    </footer>
+
+    <script>
+        // Caterer data
+        const caterers = [
+            {
+                id: 1,
+                name: "Gourmet Delights",
+                description: "Specializing in French and Italian cuisine with a modern twist. Perfect for weddings and corporate events.",
+                image: "img/ph6.png",
+                price: 1299,
+                features: ["Organic Ingredients", "Custom Menus", "Staff Service", "Table Setup"]
+            },
+            {
+                id: 2,
+                name: "Asian Fusion Masters",
+                description: "Experience the flavors of Asia with our expert chefs. Sushi, Thai, Chinese, and Vietnamese specialties.",
+                image: "img/ph1.png",
+                price: 1199,
+                features: ["Fresh Sushi Bar", "Wok Station", "Vegetarian Options", "Traditional Desserts"]
+            },
+            {
+                id: 3,
+                name: "BBQ & Grill Experts",
+                description: "Authentic smoked meats and traditional barbecue favorites. Ideal for casual events and outdoor parties.",
+                image: "img/ph2.png",
+                price: 999,
+                features: ["Live Grill Station", "Homemade Sauces", "Side Dishes", "Outdoor Setup"]
+            },
+            {
+                id: 4,
+                name: "Healthy Choices",
+                description: "Nutritious and delicious meals focused on organic, vegan, and gluten-free options for health-conscious clients.",
+                image: "img/ph5.png",
+                price: 899,
+                features: ["Organic Produce", "Vegan Options", "Gluten-Free", "Nutritional Info"]
+            },
+            {
+                id: 5,
+                name: "Dessert Masters",
+                description: "Specializing in exquisite desserts, pastries, and sweet tables that will impress your guests.",
+                image: "img/ph3.png",
+                price: 699,
+                features: ["Custom Cakes", "Chocolate Fountain", "Pastry Selection", "Themed Desserts"]
+            },
+            {
+                id: 6,
+                name: "Mediterranean Cuisine",
+                description: "Fresh and flavorful Mediterranean dishes featuring olive oil, herbs, and wholesome ingredients.",
+                image: "img/ph4.png",
+                price: 599,
+                features: ["Olive Bar", "Grilled Meats", "Fresh Salads", "Herb Infusions"]
+            }
+        ];
+
+        // Cart state
+        let selectedCaterers = [];
+
+        // DOM elements
+        const caterersContainer = document.getElementById('caterers-container');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartTotal = document.getElementById('cart-total');
+        const totalAmount = document.getElementById('total-amount');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        // Render caterers
+        function renderCaterers() {
+            caterersContainer.innerHTML = '';
+            caterers.forEach(caterer => {
+                const catererCard = document.createElement('div');
+                catererCard.className = 'caterer-card';
+                catererCard.innerHTML = `
+                    <img src="${caterer.image}" alt="${caterer.name} catering service" class="caterer-image">
+                    <div class="caterer-info">
+                        <h3 class="caterer-name">${caterer.name}</h3>
+                        <p class="caterer-description">${caterer.description}</p>
+                        <div class="caterer-features">
+                            ${caterer.features.map(feature => `
+                                <div class="feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="caterer-price">Inr ${caterer.price} per person</div>
+                        <button class="btn select-btn" data-id="${caterer.id}">
+                            Select meal
+                        </button>
+                    </div>
+                `;
+                caterersContainer.appendChild(catererCard);
+            });
+
+            // Add event listeners to select buttons
+            document.querySelectorAll('.select-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const catererId = parseInt(e.target.getAttribute('data-id'));
+                    addToCart(catererId);
+                });
+            });
+        }
+
+        // Add to cart function
+        function addToCart(catererId) {
+            const caterer = caterers.find(c => c.id === catererId);
+            const existingItem = selectedCaterers.find(item => item.id === catererId);
+            
+            if (!existingItem) {
+                selectedCaterers.push({
+                    id: caterer.id,
+                    name: caterer.name,
+                    price: caterer.price,
+                    quantity: 1
+                });
+                
+                updateCart();
+                
+                // Show confirmation message
+                showNotification(`Added ${caterer.name} to your selection!`);
+            } else {
+                showNotification(`${caterer.name} is already in your selection!`);
+            }
+        }
+
+        // Remove from cart function
+        function removeFromCart(catererId) {
+            selectedCaterers = selectedCaterers.filter(item => item.id !== catererId);
+            updateCart();
+        }
+
+        // Get total price
+        function getTotalPrice() {
+            return selectedCaterers.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        // Update cart display
+        function updateCart() {
+            if (selectedCaterers.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                cartTotal.style.display = 'block';
+                checkoutBtn.style.display = 'block';
+                
+                // Render cart items
+                cartItemsContainer.innerHTML = '';
+                selectedCaterers.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>$${item.price} per person</p>
+                        </div>
+                        <button class="btn" style="background: #ff6b6b; padding: 8px 15px;" data-id="${item.id}">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.cart-item button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const catererId = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        removeFromCart(catererId);
+                    });
+                });
+            }
+            
+            // Update total
+            totalAmount.textContent = getTotalPrice().toFixed(2);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.background = '#48bb78';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+            notification.style.zIndex = '1000';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Checkout function
+        function checkout() {
+            if (selectedCaterers.length > 0) {
+                showNotification('Thank you for your selection! Our team will contact you shortly to finalize your booking.');
+                selectedCaterers = [];
+                updateCart();
+            }
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCaterers();
+            updateCart();
+            
+            // Add event listener to checkout button
+            checkoutBtn.addEventListener('click', checkout);
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
